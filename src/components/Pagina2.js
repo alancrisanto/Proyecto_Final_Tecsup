@@ -136,55 +136,58 @@ export default function Pagina2() {
 
         {/* Estas son las tarjetas */}
 
-        <Link className="cartas" to="/pagina5" >
+        <div className="cartas">
+          
           {locales.map(
             (
               { precio, imagen, descripcion, pais, ciudad, distrito, id },
               i
             ) => (
-              <div className="col-12" key={i}>
-                <img
-                  className="card-img-top"
-                  src={imagen}
-                  alt="cocina"
-                  style={{
-                    height: "200px",
-                    objectFit: "cover",
-                    objectPosition: "center",
-                  }}
-                />
-                <p>
-                  <span className="text-primary fw-bold">Precio mensual: </span>
-                  <span className="text-info fw-bold"> $/ {precio}</span>
-                  <br />
-                  <span className="text-primary fw-bold">Mantenimiento: </span>
-                  <span className="text-info fw-bold">$/ 45</span>
-                  <br />
-                  <span className="text-primary fw-bold">Descripcion: </span>
-                  <span className="text-info fw-bold">{descripcion}</span>
-                  <br />
-                  <span className="text-info fw-bold">
-                    cocinar y hacer [...]
-                  </span>
-                  <br />
-                  <span className="text-primary fw-bold">Direccion: </span>
-                  <span className="text-info fw-bold">
-                    {pais}-{ciudad}-{distrito}
-                  </span>
-                  <br />
-                  <button
-                    className="btn btn-secondary text-white  my-2"
-                    onClick={() => {
-                      verificarEliminar(id);
+              <div>
+                <Link className="col-12" to="/pagina5" key={i}>
+                  <img
+                    className="card-img-top"
+                    src={imagen}
+                    alt="cocina"
+                    style={{
+                      height: "200px",
+                      objectFit: "cover",
+                      objectPosition: "center",
                     }}
-                  >
-                    Eliminar
-                  </button>
-                </p>
-              </div>
+                  />
+                  <p>
+                    <span className="text-primary fw-bold">Precio mensual: </span>
+                    <span className="text-info fw-bold"> $/ {precio}</span>
+                    <br />
+                    <span className="text-primary fw-bold">Mantenimiento: </span>
+                    <span className="text-info fw-bold">$/ 45</span>
+                    <br />
+                    <span className="text-primary fw-bold">Descripcion: </span>
+                    <span className="text-info fw-bold">{descripcion}</span>
+                    <br />
+                    <span className="text-info fw-bold">
+                      cocinar y hacer [...]
+                    </span>
+                    <br />
+                    <span className="text-primary fw-bold">Direccion: </span>
+                    <span className="text-info fw-bold">
+                      {pais}-{ciudad}-{distrito}
+                    </span>
+                  </p>
+
+                </Link>
+                <button
+                className="btn btn-secondary text-white  my-2"
+                onClick={() => {
+                  verificarEliminar(id);
+                }}
+              >
+                Eliminar
+              </button>
+            </div>
             )
           )}
-        </Link>
+        </div>
       </div>
     </section>
   );
