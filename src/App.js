@@ -21,7 +21,7 @@ export default function App() {
           <Route path="/pagina2" element={<Pagina2View />} />
           <Route path="/pagina3" element={<Pagina3 />} />
           <Route path="/pagina4" element={<Pagina4 />} />
-          <Route path="/pagina5" element={<Pagina5 />} />
+          <Route path="/pagina5/:id" element={<Pagina5 />} />
           <Route path="/pagina6View" element={<Pagina6View />} />
         </Routes>
         <Footer />

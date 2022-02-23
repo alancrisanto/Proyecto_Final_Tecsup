@@ -144,7 +144,7 @@ export default function Pagina2() {
               i
             ) => (
               <div>
-                <Link className="col-12" to="/pagina5" key={i}>
+                <Link className="col-12" to={`/pagina5/${id}`} key={i}>
                   <img
                     className="card-img-top"
                     src={imagen}
