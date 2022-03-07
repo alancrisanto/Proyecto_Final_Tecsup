@@ -148,6 +148,9 @@ select:focus {
   grid-template-columns: repeat(1, 1fr);
   gap: 10px;
 }
+.amoblado {
+  width: 100%;
+}
 /*Footer*/
 /* .footer-cont {
   bottom: 0;
@@ -171,6 +174,9 @@ select:focus {
   /*Pagina6*/
   .contenido-ubicacion {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .amoblado {
+    width: 50%;
   }
 }
 
