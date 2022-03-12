@@ -34,12 +34,7 @@ export default function Navegacion() {
             >
               Registro
             </Link>
-            <Link
-              className="nav-link  p-2 text-primary fw-lighter me-0 me-lg-3 mt-3 m-lg-0"
-              to="/pagina5"
-            >
-              Detalle
-            </Link>
+         
             <Link
               className="nav-link p-2  text-primary fw-lighter me-0 me-lg-3 mt-3 m-lg-0"
               to="/pagina6View"

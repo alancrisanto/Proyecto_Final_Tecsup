@@ -6,8 +6,8 @@ import {
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-
 import imagenes from "../assets/imagenes";
+import Footer from "../components/Footer";
 
 export default function Pagina2() {
   const [locales, setLocales] = useState([]);
@@ -93,102 +93,113 @@ export default function Pagina2() {
     peticionGet();
   }, []);
   return (
-    <section className="pagina2 d-flex align-items-center container">
-      <div className="row justify-content-center">
-        <div className="contenido__buscador position-relative col-12">
-          <div className="position-relative">
-            <img className="img-fluid risas col-12" src={imagenes.img2} />
-            <h3 className="mx-4 text-title display-5 col-7 col-sm-8 col-md-6 col-xl-5 fw-light">
-              Alquila cocinas fantasma <span className="fw-bold">Aqui!!!</span>
-            </h3>
-          </div>
-
-          <div className="buscador position-lg-absolute mx-lg-4">
-            <input
-              className="my-4"
-              type="search"
-              value={busqueda}
-              placeholder="Buscar por zonas Ejemplo: Miraflores"
-              onChange={handleChange}
-            />
-
-            <Link
-              to="/pagina6View"
-              className="propietario btn btn-outline-info"
-            >
-              Soy propietario
-            </Link>
-            <Link
-              to="/pagina3"
-              className="ingresar mx-2 btn btn-secondary text-white"
-            >
-              Ingresar
-            </Link>
-          </div>
-        </div>
-
-        <div className="my-4 col-12">
-          <p>
-            Acercate a tus clientes, amplia tu negocio, escoge aqui tu proximo
-            punto de reparto
-          </p>
-        </div>
-
-        {/* Estas son las tarjetas */}
-
-        <div className="cartas">
-          
-          {locales.map(
-            (
-              { precio, imagen, descripcion, pais, ciudad, distrito, id },
-              i
-            ) => (
-              <div>
-                <Link className="col-12" to={`/pagina5/${id}`} key={i}>
-                  <img
-                    className="card-img-top"
-                    src={imagen}
-                    alt="cocina"
-                    style={{
-                      height: "200px",
-                      objectFit: "cover",
-                      objectPosition: "center",
-                    }}
-                  />
-                  <p>
-                    <span className="text-primary fw-bold">Precio mensual: </span>
-                    <span className="text-info fw-bold"> $/ {precio}</span>
-                    <br />
-                    <span className="text-primary fw-bold">Mantenimiento: </span>
-                    <span className="text-info fw-bold">$/ 45</span>
-                    <br />
-                    <span className="text-primary fw-bold">Descripcion: </span>
-                    <span className="text-info fw-bold">{descripcion}</span>
-                    <br />
-                    <span className="text-info fw-bold">
-                      cocinar y hacer [...]
-                    </span>
-                    <br />
-                    <span className="text-primary fw-bold">Direccion: </span>
-                    <span className="text-info fw-bold">
-                      {pais}-{ciudad}-{distrito}
-                    </span>
-                  </p>
-
-                </Link>
-                <button
-                className="btn btn-secondary text-white  my-2"
-                onClick={() => {
-                  verificarEliminar(id);
-                }}
-              >
-                Eliminar
-              </button>
+    <>
+      <section className="pagina2 d-flex align-items-center container overflow-hidden">
+        <div className="row justify-content-center">
+          <div
+            className="contenido__buscador position-relative overflow-hidden col-12"
+            data-aos="fade-right"
+          >
+            <div className="position-relative">
+              <img className="img-fluid risas col-12" src={imagenes.img2} />
+              <h3 className="mx-4 text-title display-5 col-7 col-sm-8 col-md-6 col-xl-5 fw-light">
+                Alquila cocinas fantasma{" "}
+                <span className="fw-bold">Aqui!!!</span>
+              </h3>
             </div>
-            )
-          )}
+
+            <div className="buscador position-lg-absolute mx-lg-4">
+              <input
+                className="my-4"
+                type="search"
+                value={busqueda}
+                placeholder="Buscar por zonas Ejemplo: Miraflores"
+                onChange={handleChange}
+              />
+
+              <Link
+                to="/pagina6View"
+                className="propietario btn btn-outline-info"
+              >
+                Soy propietario
+              </Link>
+              <Link
+                to="/pagina3"
+                className="ingresar mx-2 btn btn-secondary text-white"
+              >
+                Ingresar
+              </Link>
+            </div>
+          </div>
+
+          <div className="my-4 col-12"  data-aos="fade-right">
+            <p>
+              Acercate a tus clientes, amplia tu negocio, escoge aqui tu proximo
+              punto de reparto
+            </p>
+          </div>
+
+          {/* Estas son las tarjetas */}
+
+          <div className="cartas" >
+            {locales.map(
+              (
+                { precio, imagen, descripcion, pais, ciudad, distrito, id },
+                i
+              ) => (
+                <div data-aos="flip-left">
+                  <Link className="col-12" to={`/pagina5/${id}`} key={i}>
+                    <img
+                      className="card-img-top"
+                      src={imagen}
+                      alt="cocina"
+                      style={{
+                        height: "200px",
+                        objectFit: "cover",
+                        objectPosition: "center",
+                      }}
+                    />
+                    <p>
+                      <span className="text-primary fw-bold">
+                        Precio mensual:{" "}
+                      </span>
+                      <span className="text-info fw-bold"> $/ {precio}</span>
+                      <br />
+                      <span className="text-primary fw-bold">
+                        Mantenimiento:{" "}
+                      </span>
+                      <span className="text-info fw-bold">$/ 45</span>
+                      <br />
+                      <span className="text-primary fw-bold">
+                        Descripcion:{" "}
+                      </span>
+                      <span className="text-info fw-bold">{descripcion}</span>
+                      <br />
+                      <span className="text-info fw-bold">
+                        cocinar y hacer [...]
+                      </span>
+                      <br />
+                      <span className="text-primary fw-bold">Direccion: </span>
+                      <span className="text-info fw-bold">
+                        {pais}-{ciudad}-{distrito}
+                      </span>
+                    </p>
+                  </Link>
+                  <button
+                    className="btn btn-secondary text-white  my-2"
+                    onClick={() => {
+                      verificarEliminar(id);
+                    }}
+                  >
+                    Eliminar
+                  </button>
+                </div>
+              )
+            )}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <Footer />
+    </>
   );
 }

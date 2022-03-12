@@ -97,6 +97,10 @@ select:focus {
 }
 
 /*Pagina 3*/
+.ingresa_google {
+  position: absolute;
+  top: 50px;
+}
 
 /*Botones*/
 .ingresar {

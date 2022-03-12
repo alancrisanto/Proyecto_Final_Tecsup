@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import imagenes from "../assets/imagenes";
+import Footer from "../components/Footer";
 /* import subirImage from '../services/uploadService'; */
 
 export default function FormPublicar({
@@ -21,15 +22,18 @@ export default function FormPublicar({
               src={imagenes.img21_publicar_fondo}
               alt="publicar"
             />
-            <h3 className="text-center position-lg-absolute promocion my-4 display-5 ">
+            <h3
+              className="text-center position-lg-absolute promocion my-4 display-5 "
+              data-aos="fade-right"
+            >
               <span className="fw-light">
                 Miles de negocios buscan cocinas ocultas
-              </span>{" "}
+              </span>
               , Alquila y gana!!
             </h3>
-            <button className="position-absolute btn-publicar btn btn-secondary text-white">
+            {/* <button className="position-absolute btn-publicar btn btn-secondary text-white">
               Publicar
-            </button>
+            </button> */}
           </div>
 
           <form
@@ -37,6 +41,7 @@ export default function FormPublicar({
             onSubmit={(e) => {
               manejarSubmit(e);
             }}
+            data-aos="flip-left"
           >
             <div className="contenido--form">
               <h3 className="display-6 py-4 text-center">PUBLICAR</h3>
@@ -191,6 +196,7 @@ export default function FormPublicar({
           </form>
         </div>
       </section>
+      <Footer />
 
       {/* //////////////////////////// */}
       {/* <section className="pagina-6 container-fluid  d-flex align-items-center">

@@ -3,6 +3,7 @@ import {AuthContext} from "../context/authContext";
 import { useContext, useState } from "react";
 import { loginUsuario } from "../service/loginService";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer"
 
 //Aqui estan mis imagenes
 import imagenes from "../assets/imagenes";
@@ -41,9 +42,10 @@ export default function Pagina3() {
   const {user, signOut, signIn} = useContext(AuthContext);
 
   return (
-    <section className="container">
-      <div className="row align-items-center vh-100">
-        <form className="mt-4 order-1 order-lg-0 col-12 col-lg-5">
+    <>
+      <section className="container">
+      <div className="row align-items-center min-vh-100">
+        <form className="mt-4 order-1 order-lg-0 col-12 col-lg-5" data-aos="fade-right">
           <label className="d-block" htmlFor="correo">Email</label>
           <input
             className="w-100  mb-3"
@@ -70,7 +72,7 @@ export default function Pagina3() {
               ¿Olvidaste tu contraseña?
             </a>
           </div>
-          <div className="my-5 position-absolute">
+          <div className="my-1">
             <p>Si no tienes una cuenta registrate</p>
             <Link
               to="/pagina4"
@@ -81,13 +83,13 @@ export default function Pagina3() {
           </div>
         </form>
 
-        <div className="position-relative col-12 col-lg-7">
+        <div className="position-relative col-12 col-lg-7" data-aos="zoom-out-up">
           <img
             className="img-fluid img-xl-fluid"
             src={imagenes.img7_cocinera}
             alt="cocinera"
           />
-          <div className="ms-4 position-absolute top-0">
+          <div className="ms-4  ingresa_google">
             <h3 className="mt-5 mb-3 display-6">Iniciar sesion</h3>
             <button className="google__cuenta btn btn-outline-primary" onClick={signIn}>
               <img className="me-2" src={imagenes.img8_google} alt="" />
@@ -95,7 +97,10 @@ export default function Pagina3() {
             </button>
           </div>
         </div>
+        
       </div>
     </section>
+    <Footer/>
+    </>
   );
 }
