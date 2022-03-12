@@ -1,20 +1,31 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
+import { getProductos } from "../service/CardService";
+import { obtenerLocalPorId } from "../service/productosService";
+
 import { Carousel } from "react-bootstrap";
 
-import { Link } from "react-router-dom";
-import { getProductos } from "../service/CardService";
-
 import Pagina5CardsView from "../views/Pagina5CardsView";
+
 //Aqui estan mis imagenes
 import imagenes from "../assets/imagenes";
 
 export default function Pagina5() {
-  const [productos, setProductos] = useState([]);
 
+  //agregé esto
+  const {id} = useParams();
+
+
+  const [productos, setProductos] = useState([]);
+  console.table(productos)
+
+  //cambíe el servicio por obtenerlocalporid
   const obtProductos = async () => {
     try {
-      const productosObtenidos = await getProductos();
-      setProductos(productosObtenidos);
+      const localesObtenidos = await obtenerLocalPorId(id);
+      setProductos(localesObtenidos);
     } catch (error) {
       console.log(error);
     }
@@ -62,7 +73,7 @@ export default function Pagina5() {
         >
           <Carousel.Item>
             <img
-              src={imagenes.img11_slider_1}
+              src={productos.imagen}
               alt="header1"
               className="w-100"
               style={{
@@ -110,12 +121,8 @@ export default function Pagina5() {
           </Carousel.Item>
         </Carousel>
 
-        <>
-          {productos.map((prod, i) => (
-            <Pagina5CardsView key={i} producto={prod} />
-          ))}
-          {/* <Pagina5Cards /> */}
-        </>
+        <Pagina5CardsView  producto={productos} />
+
       </div>
     </section>
   );

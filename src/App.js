@@ -10,6 +10,7 @@ import Pagina5 from "./components/Pagina5";
 import Pagina6View from "./views/Pagina6View";
 import Navegacion from "./components/Navegacion";
 import Footer from "./components/Footer";
+import { PrivateRoute } from "./PrivateRoute";
 
 export default function App() {
   return (
@@ -21,8 +22,13 @@ export default function App() {
           <Route path="/pagina2" element={<Pagina2View />} />
           <Route path="/pagina3" element={<Pagina3 />} />
           <Route path="/pagina4" element={<Pagina4 />} />
-          <Route path="/pagina5" element={<Pagina5 />} />
-          <Route path="/pagina6View" element={<Pagina6View />} />
+          <Route path="/pagina5/:id" element={<Pagina5 />} />
+          <Route path="/pagina6View" 
+            element={
+            <PrivateRoute>
+              <Pagina6View />
+            </PrivateRoute>
+            } />
         </Routes>
         <Footer />
       </Router>
