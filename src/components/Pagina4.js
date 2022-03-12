@@ -4,6 +4,7 @@ import { registroUsuario } from "../service/loginService";
 import { useNavigate } from "react-router-dom";
 //Aqui estan mis imagenes
 import imagenes from "../assets/imagenes";
+import Footer from "../components/Footer"
 
 
 export default function Pagina4() {
@@ -36,9 +37,10 @@ export default function Pagina4() {
 
   }
   return (
+    <>
     <section className="container ">
-      <div className="row vh-100 align-items-center">
-        <div className="position-relative col-12 col-lg-6">
+      <div className="row min-vh-100 align-items-center">
+        <div className="position-relative col-12 col-lg-6" data-aos="zoom-in">
           <img
             className="img-fluid img-xl-fluid"
             src={imagenes.img9_registro}
@@ -50,7 +52,7 @@ export default function Pagina4() {
           </div>
         </div>
 
-        <form className="formulario__registro my-4 col-12 col-lg-6">
+        <form className="formulario__registro my-4 col-12 col-lg-6" data-aos="fade-left">
           <div className="titulo">
             <h3 className="display-4">Registro</h3>
             <p>Ven se parte de nosotros</p>
@@ -112,5 +114,7 @@ export default function Pagina4() {
         </form>
       </div>
     </section>
+    <Footer/>
+    </>
   );
 }

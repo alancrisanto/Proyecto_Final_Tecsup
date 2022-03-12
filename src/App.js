@@ -9,7 +9,7 @@ import Pagina4 from "./components/Pagina4";
 import Pagina5 from "./components/Pagina5";
 import Pagina6View from "./views/Pagina6View";
 import Navegacion from "./components/Navegacion";
-import Footer from "./components/Footer";
+
 import { PrivateRoute } from "./PrivateRoute";
 
 export default function App() {
@@ -30,7 +30,7 @@ export default function App() {
             </PrivateRoute>
             } />
         </Routes>
-        <Footer />
+        
       </Router>
     </AuthContextProvider>
   );

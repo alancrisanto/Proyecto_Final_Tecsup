@@ -8,9 +8,11 @@ import { obtenerLocalPorId } from "../service/productosService";
 import { Carousel } from "react-bootstrap";
 
 import Pagina5CardsView from "../views/Pagina5CardsView";
+import Footer from "../components/Footer"
 
 //Aqui estan mis imagenes
 import imagenes from "../assets/imagenes";
+
 
 export default function Pagina5() {
 
@@ -35,6 +37,7 @@ export default function Pagina5() {
     obtProductos();
   }, []);
   return (
+    <>
     <section className="pagina5 d-flex align-items-center position-relative container">
       <div className="row">
         <div className=" position-relative  col-12 col-xxl-9">
@@ -125,5 +128,7 @@ export default function Pagina5() {
 
       </div>
     </section>
+    <Footer/>
+    </>
   );
 }
