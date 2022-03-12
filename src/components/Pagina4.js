@@ -1,9 +1,41 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { registroUsuario } from "../service/loginService";
+import { useNavigate } from "react-router-dom";
 
 //Aqui estan mis imagenes
 import imagenes from "../assets/imagenes";
 
+
 export default function Pagina4() {
+
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    nombre: "",
+    correo: "",
+    "password": ""
+  });
+
+  const registroValor = (e) => {
+    // console.log(e)
+    // console.log(e.target.value)
+    // console.log(e.target.id)
+    setForm((prevalue) => ({...prevalue, [e.target.id]: e.target.value}));
+  }
+
+  const registroPersona = async (e) => {
+    e.preventDefault();
+    try {
+      const {data} = await registroUsuario(form);
+      alert(data.message)
+      localStorage.setItem("token", data.token)
+      navigate("/pagina2")
+    } catch (error) {
+      alert("Hubo un error al crear registro");
+    }
+
+  }
   return (
     <section className="container ">
       <div className="row vh-100 align-items-center">
@@ -26,15 +58,23 @@ export default function Pagina4() {
           </div>
 
           <div className="contenido_registro">
-            <label className="d-block">Nombres y Apellidos</label>
+            <label className="d-block" htmlFor="nombre">Nombres y Apellidos</label>
             <input
               className="w-100"
+              id="nombre"
               type="text"
               placeholder="Ingrese su nombre y apellido"
+              onChange={registroValor}
             />
 
-            <label className="d-block">E-mail</label>
-            <input className="w-100" type="text" placeholder="Ingrese e-mail" />
+            <label className="d-block" htmlFor="correo">E-mail</label>
+            <input 
+              className="w-100" 
+              id="correo"
+              type="text" 
+              placeholder="Ingrese e-mail"
+              onChange={registroValor}
+            />
 
             <label className="d-block">Pais</label>
             <select className="w-100 text-success" name="pais">
@@ -46,11 +86,13 @@ export default function Pagina4() {
               <option>Colombia</option>
             </select>
 
-            <label className="d-block">Contraseña</label>
+            <label className="d-block" htmlFor="password">Contraseña</label>
             <input
               className="w-100"
+              id="password"
               type="password"
               placeholder="Ingrese Contraseña"
+              onChange={registroValor}
             />
 
             <label className="d-block">Repita contraseña</label>
@@ -60,7 +102,11 @@ export default function Pagina4() {
               placeholder="Ingrese Contraseña"
             />
 
-            <Link to="/pagina5" className="btn btn-info text-white my-4">
+            <Link 
+              to="/pagina2" 
+              className="btn btn-info text-white my-4"
+              onClick={registroPersona}
+            >
               Crear cuenta
             </Link>
           </div>
