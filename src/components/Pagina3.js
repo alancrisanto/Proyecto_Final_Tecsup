@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 import {AuthContext} from "../context/authContext";
 import { useContext, useState } from "react";
 import { loginUsuario } from "../service/loginService";
+import { useNavigate } from "react-router-dom";
 
 //Aqui estan mis imagenes
 import imagenes from "../assets/imagenes";
 
 export default function Pagina3() {
+
+  const navigate = useNavigate();
 
   const [login, setLogin] = useState({
     email: "",
@@ -28,6 +31,7 @@ export default function Pagina3() {
       console.log(data);
       alert(data.message)
       localStorage.setItem('token', data.token)
+      navigate("/pagina2")
     } catch (error) {
       console.log("Hubo un error");
       alert(error.response.data.message)

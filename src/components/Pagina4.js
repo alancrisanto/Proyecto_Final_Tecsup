@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { registroUsuario } from "../service/loginService";
 import { useNavigate } from "react-router-dom";
-
 //Aqui estan mis imagenes
 import imagenes from "../assets/imagenes";
 
@@ -29,7 +28,7 @@ export default function Pagina4() {
     try {
       const {data} = await registroUsuario(form);
       alert(data.message)
-      localStorage.setItem("token", data.token)
+      localStorage.setItem("token", data.token);
       navigate("/pagina2")
     } catch (error) {
       alert("Hubo un error al crear registro");
