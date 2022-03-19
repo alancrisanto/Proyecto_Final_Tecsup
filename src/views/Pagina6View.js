@@ -12,10 +12,9 @@ export default function UploadView() {
   const [value, setValue] = useState({
     titulo: "",
     descripcion: "",
-    precio: "",
-    area: "",
-    categoria_id: "1",
-    descripcion: "",
+    precio: " ",
+    area: " ",
+    categoria_id: 1,
     pais: "",
     ciudad: "",
     distrito: "",
@@ -26,13 +25,27 @@ export default function UploadView() {
   const navigate = useNavigate();
 
   const actualizarInput = (e) => {
-    console.log(e.target.name, e.target.value);
-    setValue({
-      ...value, //cogiendo el estado de value, spreadoperator
-      [e.target.name]: e.target.value,
-    });
-  };
+    /* console.log(e.target.name, e.target.value);
+     setValue({
+       ...value, //cogiendo el estado de value, spreadoperator
+       [e.target.name]: e.target.value,
+     });
+   };*/
 
+
+    if (e.target.name == "precio" || e.target.name == "area") {
+      const precio = e.target.value
+      setValue({ ...value, [e.target.name]: parseFloat(e.target.value) })  //cogiendo el estado de lvalue y spred operatr
+    }
+
+    else {
+      if (e.target.name == "categoria_id") {
+        setValue({ ...value, [e.target.name]: parseInt(e.target.value) })  //cogiendo el estado de lvalue y spred operatr
+      } else {
+        setValue({ ...value, [e.target.name]: e.target.value })  //cogiendo el estado de lvalue y spred operatr
+      }
+    }
+  }
   const manejarSubmit = async (e) => {
     e.preventDefault();
 
@@ -40,7 +53,7 @@ export default function UploadView() {
       setLoading(true);
 
       const urlImagenSubida = await subirImagen(imagen);
-
+      console.log(value);
       await crearLocal({ ...value, imagen: urlImagenSubida });
       //después de que haya terminado de crear el producto
       setLoading(false);
@@ -68,6 +81,7 @@ export default function UploadView() {
     const getCategorias = async () => {
       try {
         const catObtenidas = await obtenerCategoria();
+        console.log(catObtenidas);
         setCategoria(catObtenidas);
       } catch (error) {
         console.error(error);

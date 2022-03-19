@@ -1,11 +1,13 @@
 import axios from "axios";
 
-const URL = `${process.env.REACT_APP_API}local`;
+const URL = `${process.env.REACT_APP_BACK_URL}/listar`;
 
 const obtenerProductos = async () => {
   try {
+
     const { data } = await axios.get(URL);
-    return data;
+    console.log(data.content);
+    return data.content;
   } catch (error) {
     throw error;
   }
@@ -13,10 +15,10 @@ const obtenerProductos = async () => {
 
 const obtenerLocalPorId = async (id) => {
   try {
-      let { data } = await axios.get(`${URL}/${id}`);
-      return data;
+    let { data } = await axios.get(`${URL}/${id}`);
+    return data;
   } catch (error) {
-      throw error;
+    throw error;
   }
 };
 

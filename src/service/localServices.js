@@ -2,8 +2,17 @@ import axios from "axios";
 import { storage } from "../config/Firebase";
 
 /*const URL = "https://616b5ebb16c3fa001717168e.mockapi.io/local";*/
-const URL = `${process.env.REACT_APP_API}local`;
-const URLF = `${process.env.REACT_APP_API}fotos`;
+const URL = `${process.env.REACT_APP_BACK_URL}/publicar`;
+const URLF = `${process.env.REACT_APP_BACK_URL}/fotos`;
+
+/*
+const request = axios.create({
+    baseURL: `${process.env.REACT_APP_BACK_URL}`,
+    headers: {
+        "Content-Type": "application/json"
+    },
+});
+*/
 
 const obtenerLocal = async () => {
     try {

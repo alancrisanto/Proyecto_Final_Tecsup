@@ -1,7 +1,10 @@
 import axios from "axios";
 
-/* const URL = `${process.env.REACT_APP_API}categoria`; */
-const URL="https://616b5ebb16c3fa001717168e.mockapi.io/categoria";  
+const URL = `${process.env.REACT_APP_BACK_URL}/categoria`;
+/*const URL="https://616b5ebb16c3fa001717168e.mockapi.io/categoria";  */
+
+
+
 
 const obtenerCategoria = async () => {
     try {
@@ -12,4 +15,4 @@ const obtenerCategoria = async () => {
     }
 };
 
-export {obtenerCategoria};
+export { obtenerCategoria };

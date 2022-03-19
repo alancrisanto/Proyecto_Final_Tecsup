@@ -17,7 +17,7 @@ export default function Pagina2() {
   const peticionGet = async () => {
     try {
       const localesobtenidos = await obtenerProductos();
-      console.log(localesobtenidos);
+      console.table(localesobtenidos);
       setTablaLocal(localesobtenidos);
       setLocales(localesobtenidos);
     } catch (error) {
@@ -137,7 +137,7 @@ export default function Pagina2() {
         {/* Estas son las tarjetas */}
 
         <div className="cartas">
-
+          
           {locales.map(
             (
               { precio, imagen, descripcion, pais, ciudad, distrito, id },
@@ -177,14 +177,14 @@ export default function Pagina2() {
 
                 </Link>
                 <button
-                  className="btn btn-secondary text-white  my-2"
-                  onClick={() => {
-                    verificarEliminar(id);
-                  }}
-                >
-                  Eliminar
-                </button>
-              </div>
+                className="btn btn-secondary text-white  my-2"
+                onClick={() => {
+                  verificarEliminar(id);
+                }}
+              >
+                Eliminar
+              </button>
+            </div>
             )
           )}
         </div>
